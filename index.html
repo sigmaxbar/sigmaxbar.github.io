@@ -20,7 +20,7 @@
     <img src="assets/gear.png" alt="gear.png">
   </div>
 
-  <div id="wrapper" class="toggled">
+  <div id="wrapper">
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -41,7 +41,7 @@
 
     <div class="jumbotron">
       <div class="container-fluid bg-1 text-left title">
-        <h1 style="font-size: 108px;">TwoTails</h1>
+        <img src="assets/fox.png" width="100" height="100"><h1 style="font-size: 108px;">TwoTails</h1>
         <h4>- so as i pray, unlimited statistics works -</h4>
         <br>
         <p><span>></span> <a href="https://github.com/418dataworks"> github </a></p>
@@ -51,40 +51,71 @@
         <br>
         <br>
         <br>
-        <div>
-        <h1>Fate/Binomial Probability [Proof]</h1>
-        <h3>14 February 2018 | Sherrinford</h3>
-        <br>
-        <p>Thanks for checking out my Reddit post on the binomial distribution of the Fate/Grand Order gachas. I didn't think 8,200 people would be interested - I'm just a high school senior with some free time, not a real statistician (shout out to my
-        AP Statistics teacher who was kind enough to validate my work). Here, I'll try to explain the statistics concepts behind the probabilities to show why 9.56% isn't actually too high.</p>
-        <h2>What's a "binomial distribution"?</h2>
-        <p>A binomial distribution is a probability distribution with this definition:</p>
-        <img class="irc_mi" src="http://www.stat.yale.edu/Courses/1997-98/101/binprob.gif" alt="Image result for binomial distribution formula" width="354" height="90" />
-        <p>n is the number of trials (rolls) and p is the probability of a single success (0.01
-        for a single SSR servant card). It's an equation for the probability that the number of successes equals some number k. The first term is called the <strong>binomial coefficient</strong>: the number of ways of arranging k successes among n trials.
+        <div id="fate-geometric">
+          <h1>Fate/Unlimited Probability Works [Proof]</h1>
+          <h3>16 March 2018 | Sherrinford</h3>
+          <br>
+          <p>Yay! Chapter 5 is finally out! (Nightingale please come home ;-;) If you're here from Reddit, thanks for taking the time to check out my <a href="https://docs.google.com/spreadsheets/d/1DwCoMzkWUTCboXUN8Vu8Eys3PUbmdzQ3UYUlD95us1I/edit?usp=sharing">sprawling spreadsheet.</a>            I hope this helps everyone roll responsibly in the future. :P</p>
+          <h2>Geometric vs. Binomial Distribution</h2>
+          <p>The geometric distributions in the spreadsheet are different from the binomial distributions I posted in the <a href="https://www.reddit.com/r/grandorder/comments/7x7af7/gacha_probability_infographic/">infographic last month.</a></p>
+          <p>In a binomial problem, the number of trials is fixed (ex. you know you want to roll exactly 10 times). However, in a geometric problem, you just keep rolling until you get whatever type of card you want. Basically, a cumulative geometric distribution
+            answers the question, "If you had an infinite supply of Saint Quartz, what would be the probability of getting the type of card you want in x rolls?"</p>
+          <h2>Conditions:</h2>
+          <ol>
+            <li style="color:black; font-size:20px;"><strong>There are only two outcomes for each trial. </strong>For each roll, you either get [type of card], or you don’t.</li>
+            <li style="color:black; font-size:20px;"><strong>All trials are independent of each other. </strong>Oh man, I would love it if DW implemented a cumulative probability thing where the chance of getting a 5* would increase the more you don’t roll one.</li>
+            <li style="color:black; font-size:20px;"><strong>The probability of success for each trial is fixed. </strong>DW states the probability of a 5* servant is 0.01, 4* servant is 0.03, and 5* CE is 0.04. I divided 0.01 by 14 (current number of Story Gacha 5* servants in NA) to populate
+              the Story Gacha column. Rate-up is assumed to be 70% of the probability for any [type of card].</li>
+            <li style="color:black; font-size:20px;"><strong>The variable of interest is the # of trials required to observe the first success. </strong>With a binomial distribution, the variable of interest was the number of successes (i.e. number of 5* servants). Instead, in a geometric distribution,
+              the variable of interest is how many rolls it takes to get the first [type of card].</li>
+          </ol>
+          <h2>Math</h2>
+          <p>The common formula for the probability that it takes more than n trials (rolls) to see the first success (type of card you want) is <strong>P(x > n) = </strong><strong>(1-P)^n, </strong>where P is the probability of getting a [type of card]
+            in a single roll. However, we're interested in the other way around, which is "the probability of seeing the first success in x rolls". The formula then becomes <strong>P(x <= n) = 1 - ((1-P)^n) </strong>because the probability of all possible
+            events combined must always be 1. If we want to know the probability of all the events excluding certain events, we use the 1 minus. Let's use finding the chance of getting any 5* servant in the first 50 rolls as an example. Using the above
+            formula, the probability of getting any 5* servant in the first 50 rolls is P(x
+            <=5 0)=1 - ((1-0.01)^50)=< strong>0.39499</strong>. Does the right side of the formula look familiar? That's because it's the same one for the probability of getting one or more 5* in a fixed number of rolls, but the logic behind it is slightly different. Since it's a cumulative
+              distribution, the first success could occur on any roll between 1 and 50, but we never said you couldn't get any more 5* after!</p>
+          <p>Cheers!</p>
+          <p>~/u/Ikusahime22</p>
 
-        <img class="irc_mi" src="http://tutorial.math.lamar.edu/Classes/CalcI/DerivativeProofs_files/eq0036P.gif" alt="Image result for binomial coefficient" width="242" height="100" />
-        <h3>This is more mathy than the explanation in the post!</h3>
-        <p>That's because I calculated the <strong>inverse of the probability of getting absolutely no 5* servants</strong> to find the chance of getting at least one. If k = 0, the binomial coefficient checks out to 1. 0! is 1 (there is only one way to
-        arrange 0 successes) and the n! terms cancel out. We end up with 1/1. Working through the rest of the binomial distribution equation with k = 0, p to the 0th power is just 1. We're left with <strong>(1-p)^n</strong> . This means we can treat this
-        like an ordinary independent event probability problem - the probability of absolutely no 5* servants in a 10-roll is simply 0.99^10 . Or a different way to put it, the probability of not rolling a 5* servant in a single roll is 0.99, so multiply
-        that by itself 10 times. According to statistics, the probabilities of all possible events in a given space must always equal 1. Therefore, the probability of <strong>at least one</strong> 5* servant is 1 minus the probability that we don't get
-        any, or<strong> 1 - 0.9044 </strong><strong>= 0.0956.</strong> Keep in mind that this simple explanation only works if we want to know the probability of rolling <strong>at least one</strong> type of card. To know the probability of at least four
-        5* servants in a 10-roll, we'd have to plug k = 0, 1, 2, 3 and n = 10 into the long equation, add the answers together, and subtract that from 1 (you'd have to have EX luck to roll this). Or just use the binomcdf() shortcut in a graphing calculator
-        :D</p>
-        <h3>Conditions that must be satisfied before using the binomial distribution</h3>
-        <p>We know a distribution is binomial if...</p>
-        <ol>
-          <li style="color:black; font-size:20px;"><strong>There are only two outcomes for each trial. </strong>For each roll, you either get a 5* servant or you don't.</li>
-          <li style="color:black; font-size:20px;"><strong>All trials are independent of each other. </strong>Oh man, I would love it if DW implemented a cumulative probability thing where the chance of getting a 5* would increase the more you don't roll one.</li>
-          <li style="color:black; font-size:20px;"><strong>The number of trials is fixed. </strong>For each calculation, I defined the probability as for a 10-roll, 100 rolls, etc. If we want to know the probability for the # of rolls before the first 5* as the # of rolls approaches infinity,
-            that's the realm of geometric distribution.</li>
-          <li style="color:black; font-size:20px;"><strong>The probability of success for each trial is fixed. </strong>DW states the probability of a 5* servant is 0.01. This is where this study could have some inaccuracies, since we don't know how rate-ups and guaranteed 4*+ works.</li>
-        </ol>
-        <p>Feel free to DM me on Reddit if you have any questions on how this works or want me to quantify your luck. I can't promise when I'll get back to you though, because I need to do my actual AP Stats homework.</p>
-        <p>Cheers!</p>
-        <p> ~ /u/Ikusahime22</p>
-      </div>
+          <br>
+        </div>
+        <div id="fate-binomial">
+          <h1>Fate/Binomial Probability [Proof]</h1>
+          <h3>14 February 2018 | Sherrinford</h3>
+          <br>
+          <p>Thanks for checking out my Reddit post on the binomial distribution of the Fate/Grand Order gachas. I didn't think 8,200 people would be interested - I'm just a high school senior with some free time, not a real statistician (shout out to my
+            AP Statistics teacher who was kind enough to validate my work). Here, I'll try to explain the statistics concepts behind the probabilities to show why 9.56% isn't actually too high.</p>
+          <h2>What's a "binomial distribution"?</h2>
+          <p>A binomial distribution is a probability distribution with this definition:</p>
+          <img class="irc_mi" src="http://www.stat.yale.edu/Courses/1997-98/101/binprob.gif" alt="Image result for binomial distribution formula" width="354" height="90" />
+          <p>n is the number of trials (rolls) and p is the probability of a single success (0.01 for a single SSR servant card). It's an equation for the probability that the number of successes equals some number k. The first term is called the <strong>binomial coefficient</strong>:
+            the number of ways of arranging k successes among n trials.
+
+            <img class="irc_mi" src="http://tutorial.math.lamar.edu/Classes/CalcI/DerivativeProofs_files/eq0036P.gif" alt="Image result for binomial coefficient" width="242" height="100" />
+            <h3>This is more mathy than the explanation in the post!</h3>
+            <p>That's because I calculated the <strong>inverse of the probability of getting absolutely no 5* servants</strong> to find the chance of getting at least one. If k = 0, the binomial coefficient checks out to 1. 0! is 1 (there is only one way
+              to arrange 0 successes) and the n! terms cancel out. We end up with 1/1. Working through the rest of the binomial distribution equation with k = 0, p to the 0th power is just 1. We're left with <strong>(1-p)^n</strong> . This means we can
+              treat this like an ordinary independent event probability problem - the probability of absolutely no 5* servants in a 10-roll is simply 0.99^10 . Or a different way to put it, the probability of not rolling a 5* servant in a single roll
+              is 0.99, so multiply that by itself 10 times. According to statistics, the probabilities of all possible events in a given space must always equal 1. Therefore, the probability of <strong>at least one</strong> 5* servant is 1 minus the probability
+              that we don't get any, or<strong> 1 - 0.9044 </strong><strong>= 0.0956.</strong> Keep in mind that this simple explanation only works if we want to know the probability of rolling <strong>at least one</strong> type of card. To know the probability
+              of at least four 5* servants in a 10-roll, we'd have to plug k = 0, 1, 2, 3 and n = 10 into the long equation, add the answers together, and subtract that from 1 (you'd have to have EX luck to roll this). Or just use the binomcdf() shortcut
+              in a graphing calculator :D
+            </p>
+            <h3>Conditions that must be satisfied before using the binomial distribution</h3>
+            <p>We know a distribution is binomial if...</p>
+            <ol>
+              <li style="color:black; font-size:20px;"><strong>There are only two outcomes for each trial. </strong>For each roll, you either get a 5* servant or you don't.</li>
+              <li style="color:black; font-size:20px;"><strong>All trials are independent of each other. </strong>Oh man, I would love it if DW implemented a cumulative probability thing where the chance of getting a 5* would increase the more you don't roll one.</li>
+              <li style="color:black; font-size:20px;"><strong>The number of trials is fixed. </strong>For each calculation, I defined the probability as for a 10-roll, 100 rolls, etc. If we want to know the probability for the # of rolls before the first 5* as the # of rolls approaches infinity,
+                that's the realm of geometric distribution.</li>
+              <li style="color:black; font-size:20px;"><strong>The probability of success for each trial is fixed. </strong>DW states the probability of a 5* servant is 0.01. This is where this study could have some inaccuracies, since we don't know how rate-ups and guaranteed 4*+ works.</li>
+            </ol>
+            <p>Feel free to DM me on Reddit if you have any questions on how this works or want me to quantify your luck. I can't promise when I'll get back to you though, because I need to do my actual AP Stats homework.</p>
+            <p>Cheers!</p>
+            <p> ~ /u/Ikusahime22</p>
+        </div>
       </div>
     </div>
 

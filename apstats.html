@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TwoTails | AP Stats</title>
+  <meta charset="utf-8">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/stats.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <script src="js/Chart.min.js"></script>
+</head>
+
+<body>
+  <div id="wrapper" class="toggled">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="index.html">
+                      Home
+                  </a>
+        </li>
+        <li>
+          <a href="ibo.html">IBO</a>
+        </li>
+        <li>
+          <a href="apstats.html">AP Stats</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <h1>AP Stats Student Entertainment Survey</h1>
+        <h3>Isabella, Thea, and Justice | Period 2A</h2>
+        <h2 class="heading">Q: How do you feel about romantic comedies?</h2>
+        <canvas id="romComCtx" width="800px" height="600px"></canvas>
+        <h2 class="heading">Q: How much time do you spend in front of a screen per day on social media?</h2>
+        <canvas id="socialMediaCtx" width="800px" height="600px"></canvas>
+        <h2 class="heading">Q: Marvel or DC?</h2>
+        <br>
+        <h3 class="heading">Biased</h3>
+        <canvas id="mdBiasedCtx" width="500px" height="500px"></canvas>
+        <h3 class="heading">Unbiased</h3>
+        <canvas id="mdUnbiasedCtx" width="500px" height="500px"></canvas>
+        <h2 class="heading">Q: How much do you spend on pop culture merchandise or trending clothing/technology brands per year?</h2>
+        <canvas id="popCultureCtx" width="800px" height="600px"></canvas>
+        <script>
+          var romComCtx = document.getElementById("romComCtx").getContext('2d');
+          var popCultureCtx = document.getElementById("popCultureCtx").getContext('2d');
+          var socialMediaCtx = document.getElementById("socialMediaCtx").getContext('2d');
+          var mdBiasedCtx = document.getElementById("mdBiasedCtx").getContext('2d');
+          var mdUnbiasedCtx = document.getElementById("mdUnbiasedCtx").getContext('2d');
+
+          var romComData = {
+            labels: ["1 (Hate)", "2 (Dislike)", "3 (Neutral)", "4 (Like)", "5 (Love)"],
+            datasets: [{
+              label: "Unbiased",
+              backgroundColor: "#3e95cd",
+              data: [0, 0.1, 0.4667, 0.3333, 0.1]
+            }, {
+              label: "Biased",
+              backgroundColor: "#8e5ea2",
+              data: [0.0714, 0.0714, 0.3929, 0.2143, 0.25]
+            }]
+          };
+
+
+          var romCom = new Chart(romComCtx, {
+            type: 'bar',
+            data: romComData,
+            options: {
+              responsive: false,
+              barValueSpacing: 20,
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                  }
+                }]
+              }
+            }
+          });
+
+          var socialMediaData = {
+            labels: ["0-2 hrs", "2-4 hrs", "4-6 hrs", "6-8 hrs", "8-10 hrs"],
+            datasets: [{
+              label: "Unbiased",
+              backgroundColor: "#3e95cd",
+              data: [0.68, 0.2, 0.08, 0, 0.04]
+            }, {
+              label: "Biased",
+              backgroundColor: "#8e5ea2",
+              data: [0.7501, 0.1667, 0, 0.0833, 0]
+            }]
+          };
+
+
+          var socialMedia = new Chart(socialMediaCtx, {
+            type: 'bar',
+            data: socialMediaData,
+            options: {
+              responsive: false,
+              barValueSpacing: 20,
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                  }
+                }]
+              }
+            }
+          });
+
+
+          var popCultureData = {
+            labels: ["Under $10", "$10 - $20", "$20 - $30", "$30 - $40", "$40 - $50", "Over $50"],
+            datasets: [{
+              label: "Unbiased",
+              backgroundColor: "#3e95cd",
+              data: [0.0968, 0.1613, 0.1290, 0.0645, 0.1613, 0.3871]
+            }, {
+              label: "Biased",
+              backgroundColor: "#8e5ea2",
+              data: [0.5172, 0.3103, 0, 0.0689, 0, 0.1034]
+            }]
+          };
+
+
+          var popCulture = new Chart(popCultureCtx, {
+            type: 'bar',
+            data: popCultureData,
+            options: {
+              responsive: false,
+              barValueSpacing: 20,
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                  }
+                }]
+              }
+            }
+          });
+
+          var marvelDcDataBiased = {
+            datasets: [{
+              //19, 1, 6
+              data: [19, 1, 6],
+              backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"]
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+              'Marvel',
+              'DC',
+              'Undecided'
+            ]
+          };
+
+          var marveldcBiased = new Chart(mdBiasedCtx, {
+            type: 'pie',
+            data: marvelDcDataBiased,
+            options: {
+              responsive: false
+            }
+          });
+
+          var marvelDcDataUnbiased = {
+            datasets: [{
+              data: [23, 4, 4],
+              backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"]
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+              'Marvel',
+              'DC',
+              'Undecided'
+            ]
+          };
+
+          var marveldcUnbiased = new Chart(mdUnbiasedCtx, {
+            type: 'pie',
+            data: marvelDcDataUnbiased,
+            options: {
+              responsive: false
+            }
+          });
+        </script>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,8 @@
 body {
   font-family: 'Titillium Web', sans-serif;
-  background-color: #fafafa;
+  background-color: white;
   padding-left: 5%;
+  color: #E95420;
 }
 
 h1 {
@@ -89,7 +90,7 @@ ol {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #414141;
+    background: #E95420;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -133,7 +134,7 @@ ol {
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
     transition: 1s ease;
     white-space: nowrap;
 }
@@ -155,7 +156,7 @@ ol {
 }
 
 .sidebar-nav>.sidebar-brand a {
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
