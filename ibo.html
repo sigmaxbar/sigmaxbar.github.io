@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>TwoTails</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <div id="bg">
+    <img src="assets/gear.png" alt="gear.png">
+  </div>
+
+  <div id="wrapper" class="toggled">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="index.html">
+                      Home
+                  </a>
+        </li>
+        <li>
+          <a href="ibo.html">IBO</a>
+        </li>
+        <li>
+          <a href="apstats.html">AP Stats</a>
+        </li>
+      </ul>
+    </div>
+
+
+      <div class="container-fluid bg-1 text-left title">
+        <h1>IBO Data Proof Software "Peregrine"</h2>
+      <a href="assets/Peregrine-1.0.jar">Download (658KB)</a>
+      <br>
+      <h2>1.0 | 19 May 2018</h2>
+      <p>* Initial build</p>
+      <p>* Ruleset must be specified in order to perform proofing</p>
+      <p>* Compatible file types: .csv</p>
+      <p>* Rulesets: Songbird (2017), Hummingbird (2017)</p>
+    </div>
+  </div>
+
+
+
+
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+</body>
+
+</html>
